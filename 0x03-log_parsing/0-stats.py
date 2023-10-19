@@ -21,13 +21,13 @@ try:
             status_code_counts += 1
 
         if status_code_counts == 10:
-            print("File size: {}".format(total_size))
+            status_code_counts = 0
+            print('File size: {}'.format(total_size))
             for key, value in sorted(expected_status_codes.items()):
                 if value != 0:
-                    print("{}: {}".format(key, value))
-            status_code_counts = 0
+                    print('{}: {}'.format(key, value))
 
-except KeyboardInterrupt:
+except Exception as err:
     pass
 
 finally:
