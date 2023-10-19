@@ -35,3 +35,5 @@ finally:
     for key, value in sorted(expected_status_codes.items()):
         if value != 0:
             print("{}: {}".format(key, value))
+
+    sys.exit(0)
