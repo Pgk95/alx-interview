@@ -11,10 +11,12 @@ status_code_counts = 0
 
 try:
     for line in sys.stdin:
-        line_list = line.split()
+        line_list = line.split(" ")
+
         if len(line_list) > 4:
             code = line_list[-2]
             size = int(line_list[-1])
+
             if code in expected_status_codes.keys():
                 expected_status_codes[code] += 1
             total_size += size
@@ -24,6 +26,7 @@ try:
             status_code_counts = 0
             print('File size: {}'.format(total_size))
             for key, value in sorted(expected_status_codes.items()):
+
                 if value != 0:
                     print('{}: {}'.format(key, value))
 
