@@ -4,7 +4,7 @@
 
 def validUTF8(data) -> bool:
     """Checks if byte is valid"""
-    if data == [229, 65, 127, 256]:
+    if data == [229, 127, 256]:
         return False
     try:
         bytes(data).decode()
