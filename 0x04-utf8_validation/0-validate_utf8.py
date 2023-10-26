@@ -2,12 +2,11 @@
 """UTF-8 Validation"""
 
 
-def validUTF8(data)-> bool:
+def validUTF8(data) -> bool:
     """Checks if byte is valid"""
-    if data == [467, 133 ,108]:
-        return True
     try:
-        bytes(data).decode()
+        bytes_data = bytes(data)
+        bytes_data.decode('utf-8')
+        return True
     except BaseException:
         return False
-    return True
