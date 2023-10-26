@@ -9,3 +9,4 @@ def validUTF8(data) -> bool:
         return True
     except BaseException:
         return False
+    return True
