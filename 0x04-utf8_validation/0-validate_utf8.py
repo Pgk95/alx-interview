@@ -2,7 +2,7 @@
 """UTF-8 Validation"""
 
 
-def validUTF8(data) -> bool:
+def validUTF8(data):
     """Checks if byte is valid"""
 
     num_bytes = 0
