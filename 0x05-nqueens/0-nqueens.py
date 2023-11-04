@@ -29,12 +29,14 @@ def solve_nqueens(n):
             for solution in inner_solution
             if safe_queen((n, i + 1), solution)]
 
+
 def attack_queen(square, queen):
     """attacking"""
     (row1, col1) = square
     (row2, col2) = queen
     return (row1 == row2 or col1 == col2 or
             abs(row1 - row2) == abs(col1 - col2))
+
 
 def safe_queen(sqr, queens):
     """safe"""
@@ -43,8 +45,9 @@ def safe_queen(sqr, queens):
             return False
     return True
 
+
 for answer in reversed(solve_nqueens(n_q)):
     result = []
     for p in [list(p) for p in answer]:
         result.append([i - 1 for i in p])
-    print(result) 
+    print(result)
