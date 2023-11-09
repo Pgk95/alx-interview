@@ -5,18 +5,21 @@ const url = 'https://swapi-api.hbtn.io/api/films/' + MovieID;
 const method = 'GET';
 
 request(url, method, function (error, response, body) {
-    if (error) {
-        console.log(error);
-    } else {
-        const characters = JSON.parse(body).characters;
-        for (const character of characters) {
-            request(character, method, function (error, response, body) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(JSON.parse(body).name);
-                }
-            });
+    request(url, function (error, response, body) {
+        if (!error) {
+            const characters = JSON.parse(body).characters;
+            print
         }
+    });
+
+    function print(characters, i) {
+        request(characters[i], function (error, response, body) {
+            if (!error) {
+                console.log(JSON.parse(body).name);
+                if (i + 1 < characters.length) {
+                    print(characters, i + 1);
+                }
+            }
+        });
     }
 });
