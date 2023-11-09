@@ -8,7 +8,7 @@ request(url, method, function (error, response, body) {
     request(url, function (error, response, body) {
         if (!error) {
             const characters = JSON.parse(body).characters;
-            print
+            print(characters, 0)
         }
     });
 
