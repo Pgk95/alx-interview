@@ -5,7 +5,7 @@
 def primes(n):
     """primes - Returns a list of prime numbers up to n."""
     prime = []
-    sieve = [True] * (n + 1)
+    filter = [True] * (n + 1)
     for p in range(2, n + 1):
         if (sieve[p]):
             prime.append(p)
