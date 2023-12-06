@@ -1,37 +1,32 @@
 #!/usr/bin/python3
-"""prime game"""
+"""Prime Game"""
 
 
-def get_prime(x, nums):
-    """returns a list of prime numbers"""
+def primes(n):
+    """primes - Returns a list of prime numbers up to n."""
     prime = []
-    for i in range(x):
-        if nums[i] > 1:
-            for j in range(2, nums[i]):
-                if (nums[i] % j) == 0:
-                    break
-            else:
-                prime.append(nums[i])
+    sieve = [True] * (n + 1)
+    for p in range(2, n + 1):
+        if (sieve[p]):
+            prime.append(p)
+            for i in range(p, n + 1, p):
+                sieve[i] = False
     return prime
 
 
 def isWinner(x, nums):
-    """returns the name of the player that won the most rounds"""
-    if not nums or x < 1:
+    """isWinner - Determines who the winner of the game is.    """
+    if x is None or nums is None or x == 0 or nums == []:
         return None
-    Maria = 0
-    Ben = 0
-    prime = get_prime(x, nums)
+    Maria = Ben = 0
     for i in range(x):
-        if i % 2 == 0:
-            if nums[i] in prime:
-                Maria += 1
+        prime = primes(nums[i])
+        if len(prime) % 2 == 0:
+            Ben += 1
         else:
-            if nums[i] in prime:
-                Ben += 1
+            Maria += 1
     if Maria > Ben:
-        return "Ben"
-    elif Maria < Ben:
-        return "Maria"
-    else:
-        return None
+        return 'Maria'
+    elif Ben > Maria:
+        return 'Ben'
+    return None
