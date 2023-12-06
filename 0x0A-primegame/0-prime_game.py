@@ -2,42 +2,36 @@
 """prime game"""
 
 
+def get_prime(x, nums):
+    """returns a list of prime numbers"""
+    prime = []
+    for i in range(x):
+        if nums[i] > 1:
+            for j in range(2, nums[i]):
+                if (nums[i] % j) == 0:
+                    break
+            else:
+                prime.append(nums[i])
+    return prime
+
+
 def isWinner(x, nums):
-    """winner function"""
-    def is_prime(num):
-        """prime function"""
-        if num < 2:
-            return False
-        for i in range(2, int(num**0.5) + 1):
-            if num % i == 0:
-                return False
-        return True
-
-    def get_primes(n):
-        """prime function"""
-        primes = []
-        for i in range(2, n + 1):
-            if is_prime(i):
-                primes.append(i)
-        return primes
-
-    def game_winner(n):
-        """winner function"""
-        primes = get_primes(n)
-        xor_sum = 0
-        for prime in primes:
-            xor_sum ^= prime
-
-        return "Maria" if xor_sum == 0 else "Ben"
-
-    winners = [game_winner(n) for n in nums]
-
-    maria_wins = winners.count("Maria")
-    ben_wins = winners.count("Ben")
-
-    if maria_wins > ben_wins:
-        return "Maria"
-    elif ben_wins > maria_wins:
+    """returns the name of the player that won the most rounds"""
+    if not nums or x < 1:
+        return None
+    Maria = 0
+    Ben = 0
+    prime = get_prime(x, nums)
+    for i in range(x):
+        if i % 2 == 0:
+            if nums[i] in prime:
+                Maria += 1
+        else:
+            if nums[i] in prime:
+                Ben += 1
+    if Maria > Ben:
         return "Ben"
+    elif Maria < Ben:
+        return "Maria"
     else:
         return None
